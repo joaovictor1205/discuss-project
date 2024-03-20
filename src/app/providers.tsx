@@ -1,6 +1,7 @@
 "use client"
 
 import { NextUIProvider } from "@nextui-org/react";
+import { SessionProvider } from "next-auth/react";
 import React from "react";
 
 interface IProviders {
@@ -8,5 +9,11 @@ interface IProviders {
 }
 
 export default function Providers({ children }: IProviders) {
-  return <NextUIProvider> { children } </NextUIProvider>
+  return (
+    <SessionProvider> 
+      <NextUIProvider> 
+        { children } 
+      </NextUIProvider> 
+    </SessionProvider>
+  );
 };
